@@ -5,7 +5,7 @@ layout: default
 
 1. Get template [https://api.nette.org/2.4/source-Application.UI.Control.php.html#42-56](https://api.nette.org/2.4/source-Application.UI.Control.php.html#42-56)
   
-{% highlight php startinline lineos %}
+{% highlight php startinline=true %}
 /** @var Nette\Bridges\ApplicationLatte\Template $template **/
 $template = $this->getTemplate();
 {% endhighlight %}
