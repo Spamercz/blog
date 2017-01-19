@@ -5,6 +5,18 @@ layout: default
 span.nv {
     color: #9876AA;
 }
+span.na {
+    color: #FFC66D;
+}
+span.nf {
+    color: #FFC66D;
+}
+span.sd {
+    color: #629755;
+}
+span.k {
+    color: #CC7832;
+}
 </style>
 
 1. Get template [https://api.nette.org/2.4/source-Application.UI.Control.php.html#42-56](https://api.nette.org/2.4/source-Application.UI.Control.php.html#42-56)
