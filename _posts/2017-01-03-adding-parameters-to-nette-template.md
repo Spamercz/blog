@@ -3,7 +3,7 @@ layout: default
 ---
 
 
-1. Get template [https://api.nette.org/2.4/source-Application.UI.Control.php.html#42-56]
+1. Get template [https://api.nette.org/2.4/source-Application.UI.Control.php.html#42-56](https://api.nette.org/2.4/source-Application.UI.Control.php.html#42-56)
   
   ```php
   /** @var Nette\Bridges\ApplicationLatte\Template $template
@@ -11,7 +11,7 @@ layout: default
   ```
   
 2. Set Up parameter
-  [https://api.nette.org/2.4/source-Bridges.ApplicationLatte.Template.php.html#141-152]
+  [https://api.nette.org/2.4/source-Bridges.ApplicationLatte.Template.php.html#141-152](https://api.nette.org/2.4/source-Bridges.ApplicationLatte.Template.php.html#141-152)
   
   ```php
   $template->add($name, $value);
