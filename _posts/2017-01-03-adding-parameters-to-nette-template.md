@@ -8,9 +8,9 @@
 2. Set Up parameter
   https://api.nette.org/2.4/source-Bridges.ApplicationLatte.Template.php.html#141-152
   
-  ```
+  {% highlight php linenos %}
   $template->add($name, $value);
-  ```
+  {% highlight %}
   
 3. Bonus
 
