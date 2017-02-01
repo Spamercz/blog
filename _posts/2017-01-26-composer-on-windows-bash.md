@@ -12,3 +12,7 @@ Assuming we are in directory `/home/spamer/`.
 `alias composer='/home/spamer/composer.phar'`
 
 Now you can `composer` anywhere.
+
+
+<p>[Back to index](http://spameri.cz)</p>
+<p class="meta">{{ page.date | date_to_string }}</p>

@@ -79,3 +79,7 @@ And run elasticsearch
 cd
 chmod 777 -R elasticsearch-5.1.2/logs/
 ```
+
+
+<p>[Back to index](http://spameri.cz)</p>
+<p class="meta">{{ page.date | date_to_string }}</p>
