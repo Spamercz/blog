@@ -19,6 +19,8 @@ span.k {
 }
 </style>
 
+<p class="meta">{{ page.date | date_to_string }}</p>
+
 ## 1. Get template 
 [https://api.nette.org/2.4/source-Application.UI.Control.php.html#42-56](https://api.nette.org/2.4/source-Application.UI.Control.php.html#42-56)
   
