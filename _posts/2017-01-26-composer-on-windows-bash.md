@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 How to install composer and make alias for it. 
 
 ### Optional 
@@ -14,5 +18,7 @@ Assuming we are in directory `/home/spamer/`.
 Now you can `composer` anywhere.
 
 
-<p>[Back to index](http://spameri.cz)</p>
+<p>
+	<a href="http://spameri.cz">Back to index</a>
+</p>
 <p class="meta">{{ page.date | date_to_string }}</p>
