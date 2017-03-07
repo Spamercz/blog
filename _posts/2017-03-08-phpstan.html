@@ -1,0 +1,69 @@
+---
+layout: default
+title: Phpstan
+---
+<style>
+	{% include styles.css %}
+</style>
+
+<h1>
+  Installation
+</h1>
+<p>
+  <a href="https://github.com/phpstan/phpstan">Phpstan</a> is tool for static code analysis in php. 
+  It tries to find bugs in your code before you test/run it.
+</p>
+<p>
+  Installation is really easy using composer by <code>composer require --dev phpstan/phpstan</code>
+</p>
+<hr>
+
+<h3>Usage</h3>
+<p>
+  Linux: <code>vendor/bin/phpstan analyse app</code>, Windows <code>vendor\bin\phpstan.bat analyse app</code> make sure you 
+  are using appropriate slashes.<br>
+  First option is <strong>analyse</strong> that's clear, second is directory you want to analyse. In our case we are using Nette application
+  whitch is usually placed in <strong>app</strong> folder. You can use multiple folder separated by spaces for one analyser run.
+</p>
+<ol>
+	<li>
+		Run <code>vendor\bin\phpstan.bat analyse app</code>
+		<img src="/files/images/phpstan-1.PNG" />
+	</li>
+	<li>
+		Wait for Phpstan to analyse files
+		<img src="/files/images/phpstan-2.PNG">
+	</li>
+	<li>
+		Count errors
+		<img src="/files/images/phpstan-3.PNG">
+	</li>
+	<li>
+		Fix them
+	</li>
+	<li>
+		Safer application - Profit! :)
+	</li>
+</ol>
+
+<h3>Analyse levels</h3>
+<p>
+	Phpstan supports multiple levels of analysis with more rules higher analysis level.
+	<code>vendor\bin\phpstan.bat -l 1 analyse app</code>
+	Default run is level <strong>0</strong>. Top level is 4. Preferably you run first level 0
+	fix errors, move to level 1 fix errors and repeat until level 4.
+</p>
+
+<h3>Custom config</h3>
+<p>
+	Want more specific ruleset? You can set it by .neon file
+	<br>
+	<code>vendor\bin\phpstan.bat -c app/config/phpstan.neon analyse app</code>
+	<br>
+	More in <a href="https://github.com/phpstan/phpstan#configuration">documentation</a>.
+</p>
+
+<p>
+    <a href="http://blog.spameri.cz">Back to index</a>
+</p>
+<p class="meta">Posted: {{ page.date | date_to_string }}</p>
