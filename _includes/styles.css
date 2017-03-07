@@ -5,12 +5,22 @@
 .skill {
     background: #d3d3d3;
     width: 360px;
-    height: 18px;
+    height: 8px;
     display: block;
+    position: relative;
 }
 
 .skill-php::before {
   background: #8892bf;
+}
+
+.skill::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    z-index: 2;
 }
 
 .skill-1::before {
