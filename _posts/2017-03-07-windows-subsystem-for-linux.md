@@ -15,7 +15,7 @@ title: Windows Subsystem for Linux - Sync Issues
   Situation
 </h3>
 <p>
-  You have php application in WSL ```/var/www/application``` and you want edit it from windows with IDE (ie. PHPStorm).
+  You have php application in WSL <code>/var/www/application</code> and you want edit it from windows with IDE (ie. PHPStorm).
 </p>
 
 <hr>
@@ -49,10 +49,10 @@ title: Windows Subsystem for Linux - Sync Issues
   Solution
 </h3>
 <p>
-  It's recommended to ```cd``` to windows folder and work there.<br>
-  Move files from ```/var/www/application``` to ```C:/Users/VBoss/Projects/application```. 
-  Then set paths and configs to use this path ```/mnt/c/Users/VBoss/Projects/application```. <br>
-  And done, in my case i can run ```composer install``` in application folder using php from WSL.
+  It's recommended to <code>cd</code> to windows folder and work there.<br>
+  Move files from <code>/var/www/application</code> to <code>C:/Users/VBoss/Projects/application</code>. 
+  Then set paths and configs to use this path <code>/mnt/c/Users/VBoss/Projects/application</code>. <br>
+  And done, in my case i can run <code>composer install</code> in application folder using php from WSL.
 </p>
 
 <p>[Back to index](http://spameri.cz)</p>
