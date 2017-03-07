@@ -82,6 +82,6 @@ chmod 777 -R elasticsearch-5.1.2/logs/
 
 
 <p>
-	<a href="http://spameri.cz">Back to index</a>
+	<a href="http://blog.spameri.cz">Back to index</a>
 </p>
 <p class="meta">{{ page.date | date_to_string }}</p>
