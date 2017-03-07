@@ -2,6 +2,33 @@
   color: #8892bf;
 }
 
-.php-background {
+.skill {
+    background: #d3d3d3;
+    width: 360px;
+    height: 18px;
+    display: block;
+}
+
+.skill-php::before {
   background: #8892bf;
+}
+
+.skill-1::before {
+  width: 20%;
+}
+
+.skill-2::before {
+  width: 40%;
+}
+
+.skill-3::before {
+  width: 60%; 
+}
+
+.skill-4::before { 
+  width: 80%;
+}
+
+.skill-5::before {
+  width: 100%;
 }
