@@ -3,6 +3,8 @@ layout: default
 overview: true
 ---
 
+{% include styles.css %}
+
 <p>
 	I am php programmer in <a href="http://www.peckadesign.cz">Peckadesign</a> in Brno. My hobby project is <a href="http://spameri.cz">Spameri</a>.
 	Spameri are now in process of rebuilding, including development environment, setting up automatic testing and more.
@@ -16,4 +18,20 @@ overview: true
 		<a href="{{ post.url }}" title="{{ post.title }}">{{ post.title}}</a>
 	</li>
 	{% endfor %}
+</ul>
+
+
+<p>
+	Technologies using or tried
+</p>
+<ul>
+	<li>
+		<a href="http://php.net/" class="php">PHP7</a>
+	</li>
+	<li>
+		<a href="https://www.elastic.co/products/elasticsearch/">ElasticSearch 5.2+</a>
+	</li>
+	<li>
+		<a href="https://blackfire.io/">Blackfire.io</a>
+	</li>
 </ul>
