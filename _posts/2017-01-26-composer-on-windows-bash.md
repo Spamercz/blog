@@ -19,6 +19,6 @@ Now you can `composer` anywhere.
 
 
 <p>
-	<a href="http://spameri.cz">Back to index</a>
+	<a href="http://blog.spameri.cz">Back to index</a>
 </p>
 <p class="meta">{{ page.date | date_to_string }}</p>
