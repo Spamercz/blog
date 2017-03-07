@@ -10,5 +10,7 @@ title: Some Title
 # content
 
 
-<p>[Back to index](http://spameri.cz)</p>
+<p>
+    <a href="http://blog.spameri.cz">Back to index</a>
+</p>
 <p class="meta">Posted: {{ page.date | date_to_string }}</p>
