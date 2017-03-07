@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Windows Subsystem for Linux - Sync Issues
-----
+---
 
 <style>
 	{% include styles.css %}
