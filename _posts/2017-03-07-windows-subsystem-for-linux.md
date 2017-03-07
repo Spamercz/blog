@@ -55,5 +55,5 @@ title: Windows Subsystem for Linux - Sync Issues
   And done, in my case i can run <code>composer install</code> in application folder using php from WSL.
 </p>
 
-<p>[Back to index](http://spameri.cz)</p>
+<a href="http://spameri.cz">Back to index</a>
 <p class="meta">Posted: {{ page.date | date_to_string }}</p>
