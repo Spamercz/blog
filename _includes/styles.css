@@ -1,9 +1,26 @@
 li {
   line-height: 3em;
 }
+
 h3 {
   border-bottom: 2px;
   border-bottom-color: white;
+}
+
+span.nv {
+    color: #9876AA !IMPORTANT;
+}
+span.na {
+    color: #FFC66D !IMPORTANT;
+}
+span.nf {
+    color: #FFC66D !IMPORTANT;
+}
+span.sd {
+    color: #629755 !IMPORTANT;
+}
+span.k {
+    color: #CC7832 !IMPORTANT;
 }
 
 .php {
