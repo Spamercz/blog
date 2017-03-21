@@ -1,0 +1,126 @@
+---
+layout: default
+comments: true
+title: OOP in PHP
+---
+<style>
+	{% include styles.css %}
+</style>
+
+<h1>
+  OOP in PHP
+</h1>
+
+<p>
+    Recently I was thinking about OOP and how to use it properly in PHP. I spent hours of reading smart people opinions
+    and hours writing my own view of using OOP in PHP. In this <a href="https://github.com/VBoss/PHP-OOP-Example">repository</a>
+    are all my thoughts so lets talk them through.
+</p>
+
+<hr />
+
+<h3>
+    Starting
+</h3>
+<p>
+    Goal of this example is to demonstrate how to transform this simplified process of fetching, updating and saving
+    to be as OOP as possible. Our source of data is ElasticSearch which returns array of data for entity. In application
+    we will change name of entity and add data to nested array. Last step is saving changed entity to elastic as array
+    with same structure as entity.
+</p>
+
+<p>
+    Entity title:
+</p>
+
+<code>
+class Entity
+{
+    private $id;
+    private $name;
+
+    public function __construct($data)
+    {
+        $this->metadata = $data;
+    }
+
+    public function getName()
+    {
+        return $this->metadata['name'];
+    }
+
+    public function setName($name)
+    {
+        $this->metadata['name'] = $name;
+    }
+}
+</code>
+
+<p>
+    Application code:
+</p>
+
+<code>
+$data = $this->elastic->get('3315342');
+
+$title = new \Before\Model\Entity\Title($data);
+
+$title->setName('Logan');
+$title->setPeople([
+    123456 => [
+        'id' => 123456,
+        'name' => 'Hugh Jackman',
+        'character' => 'James Howlett',
+    ],
+]);
+
+$title->getName();
+foreach ($title->getPeople()->getData() as $person) {
+    $person->getName();
+    $person->getCharacter();
+}
+
+$this->elastic->save($entity->toArray());
+</code>
+
+<hr />
+
+<h3>
+    Why is this bad solution
+</h3>
+
+<p>
+    This is working solution i was using for while but there are issues with maintainability, testing and checking consistency.
+    Those are things OOP should help with.
+</p>
+
+<ul>
+    <li>
+        We don't know if entity has valid data. What if we construct with array without 'name' key.
+    </li>
+    <li>
+        Entity does not require configuring all of its properties thus we can have entity without specifying id.
+    </li>
+    <li>
+        There is no validation of data structure for properties. Ie property people has not documented and not checked
+        complicated structure.
+    </li>
+    <li>
+        Tests will be too ambiguous as we can't really know what is input or output data. And in every place in our application
+        we have to test if 'getId()' is returning expected value.
+    </li>
+</ul>
+
+<hr />
+
+<h3>
+    Moving to OOP
+</h3>
+
+<p>
+    // TODO
+</p>
+
+{% include disqus.html %}
+
+{% include footer.html %}
