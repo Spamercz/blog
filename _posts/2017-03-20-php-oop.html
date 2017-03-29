@@ -14,11 +14,8 @@ title: OOP in PHP
 <p>
     Recently I was thinking about OOP and how to use it properly in PHP. I spent hours of reading smart people opinions
     and hours writing my own view of using OOP in PHP. In this <a href="https://github.com/VBoss/PHP-OOP-Example">repository</a>
-    are all my thoughts. In this article i will show you how to encapsulate data.
-</p>
-<p>
-    Data encapsulating is mandatory in true OOP design, you don't want to use raw data. It may not make much sense if you
-    are starting with OOP 
+    are all my thoughts. Data encapsulating is mandatory in true OOP design, you don't want to use raw data. And in this
+	article i will show you how to encapsulate data.
 </p>
 
 <hr />
@@ -33,9 +30,9 @@ title: OOP in PHP
     with same structure as entity.
 </p>
 
-<p>
-    Entity Title:
-</p>
+<h3>
+    Original entity Title:
+</h3>
 
 ```php?start_inline=true 
 class Title
@@ -60,9 +57,9 @@ class Title
 }
 ```
 
-<p>
-    Application code:
-</p>
+<h3 id="original-app">
+    Original application code:
+</h3>
 
 ```php?start_inline=true 
 $data = $this->elastic->get('3315342');
@@ -104,8 +101,8 @@ $this->elastic->save($entity->toArray());
         Entity does not require configuring all of its properties thus we can have entity without specifying id.
     </li>
     <li>
-        There is no validation of data structure for properties. Ie property people has not documented and not checked
-        complicated structure.
+        There is no validation of data structure for properties. Ie property 'people' has undocumented and complicated
+		structure.
     </li>
     <li>
         Tests will be too ambiguous as we can't really know what is input or output data. And in every place in our application
@@ -120,11 +117,11 @@ $this->elastic->save($entity->toArray());
 </h2>
 
 <p>
-    To achieve that we should move all data setting and validation to constructor.
+    To achieve encapsulation we should move all data setting and validation to constructor.
 </p>
 
 ```php?start_inline=true 
-class Entity
+class Title
 {
     public function __construct($data)
     {
@@ -148,9 +145,11 @@ class Entity
 
 <p>
     Now we have valid property id, but entity still has set methods to change its internal properties. So we need to
-    duplicate validation to setter right? Wrong, <strong>encapsulation</strong> is what we need. To avoid duplicating of
-    code we can encapsulate data to another class like this. <a href="https://github.com/VBoss/PHP-OOP-Example/blob/master/After/Model/Entity/Title/Id.php">source</a>
-    And bonus is constructor will respect SRP. It won't be too long and doing too much things.
+    duplicate validation to setter right? And what if we need 'id' validation in another object? <strong>Encapsulation</strong>
+	is what we need. To avoid duplication of code we can encapsulate data to another class like this.
+	<a href="https://github.com/VBoss/PHP-OOP-Example/blob/master/After/Model/Entity/Title/Id.php">source</a>
+    And bonus is constructor will be cleaner, more understandable and more maintainable. It won't be too long and it
+	won't be doing too much things.
 </p>
 
 ```php?start_inline=true 
@@ -177,32 +176,50 @@ class Id
     }
 }
 ```
+
+<p>
+	Updated title entity:
+</p>
+
+```php?start_inline=true
+class Title
+{
+	public function __construct(Id $id)
+	{
+		$this->id = $id;
+	}
+}
+```
+
 <p>
     Constructing Title entity, keep in mind we are not done here.
 </p>
+
 ```php?start_inline=true 
 $title = new Title(
     new Id($data['id'])
 );
 ```
+
 <p>
     Now we have universal id validating class. We can go deeper as we can encapsulate id value into class 'integerType'
-    to validate integer and use that validation on other places. In my <a href="https://github.com/VBoss/PHP-OOP-Example/blob/master/After/Model/Entity/IntegerType.php">example</a>
-    I went that far, but it is not necessary.
+    to validate integer and use that validation in other places. In my <a href="https://github.com/VBoss/PHP-OOP-Example/blob/master/After/Model/Entity/IntegerType.php">example</a>
+    I went that far.
 </p>
 <p>
     But this does not solve problem with setter completely, we can still manipulate Title entity properties during its
-    lifetime. Best solution is to drop setter and don't use them. It is very unlikely to change entity id. But you can
-    have another properties which you might want to edit, like name. Still setter is not best solution as described
+    lifetime. That means title entity is not immutable. Making objects immutable is our next step. Best solution is to
+	drop setters and don't use them. It is very unlikely to change entity id. But you can
+	have another properties which you might want to edit, like <strong>name</strong>. Still setter is not best solution as described
     <a href="http://www.yegor256.com/2014/09/16/getters-and-setters-are-evil.html">many</a> times.
-    In this example i have rename() function. <a href="https://github.com/VBoss/PHP-OOP-Example/blob/master/After/Model/Entity/Title.php#L76">(source)</a>
+    In this example i have <strong>rename()</strong> function. <a href="https://github.com/VBoss/PHP-OOP-Example/blob/master/After/Model/Entity/Title.php#L76">(source)</a>
     This way entity Title stay valid at all times.
 </p>
 ```php?start_inline=true
-    public function rename(\After\Model\Entity\Title\Name $name)
-    {
-        $this->name = $name;
-    }
+public function rename(\After\Model\Entity\Title\Name $name)
+{
+	$this->name = $name;
+}
 ```
 
 <hr />
@@ -211,9 +228,11 @@ $title = new Title(
     Usages
 </h2>
 <p>
-    Encapsulating and data validation might not have much sense when you are author of the data and it is from your database,
-    but other people (including future you) will easily know how to construct entity, add/edit data. And desired entity will be
-    valid at all times. <br />
+    Encapsulating, immutability and data validation might not have much sense when you are author of the data and it is
+	from your database, but other people <strong>(including future you)</strong> will easily know how to construct entity,
+	add/edit data. And desired entity will be valid at all times.
+</p>
+<p>
     Also this will be really handy if you need to import data to your project from another system, no need for further data
     validation just build entity and you are ready to go.
 </p>
@@ -221,24 +240,27 @@ $title = new Title(
 <hr />
 
 <h2>
-    Elastic example
+    Updated example of <a href="#original-app">original</a> application mentioned above. All data are encapsulated,
+	validated, and objects are immutable. Changing name is done by dedicated typed function. And save function requires
+	interface <strong>IEntity</strong> instead of array. More about transforming entity to array is in my
+	<a href="https://github.com/VBoss/PHP-OOP-Example/blob/master/After/Model/ToArray.php">example</a>.
 </h2>
 
-
 ```php?start_inline=true
-$people = new \After\Model\Collection\People([]);
-$people->add(
-    new \After\Model\Entity\Person(
-        new \After\Model\Entity\Person\Id(
-            new \After\Model\Entity\IntegerType(1772)
-        )
-        , new \After\Model\Entity\Person\Name(
-            new \After\Model\Entity\StringType('Patrick Stewart')
-        )
-        , new \After\Model\Entity\Person\Character(
-            new \After\Model\Entity\StringType('Charles Xavier')
-        )
-    )
+$data = $this->elastic->get('3315342');
+
+$people = new \After\Model\Collection\People(
+	new \After\Model\Entity\Person(
+		new \After\Model\Entity\Person\Id(
+			new \After\Model\Entity\IntegerType(1772)
+		)
+		, new \After\Model\Entity\Person\Name(
+			new \After\Model\Entity\StringType('Patrick Stewart')
+		)
+		, new \After\Model\Entity\Person\Character(
+			new \After\Model\Entity\StringType('Charles Xavier')
+		)
+	)
 );
 
 $entity = new \After\Model\Entity\Title(
@@ -275,6 +297,7 @@ $entity->people()->add(
     )
 );
 
+$this->elastic->save($entity);
 ```
 
 {% include disqus.html %}
