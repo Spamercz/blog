@@ -54,9 +54,6 @@ public function getTemplate()
 $this->getTemplate()->add($name, $value);
 ```
 
+{% include footer.html %}
 
-<p>
-    <a href="http://blog.spameri.cz">Back to index</a>
-</p>
-
-<p class="meta">{{ page.date | date_to_string }}</p>
+{% include disqus.md %}
