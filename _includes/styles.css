@@ -67,3 +67,8 @@ span.k {
 .skill-5::before {
   width: 100%;
 }
+
+.css {
+    position: absolute;
+    right: 20px;
+}
