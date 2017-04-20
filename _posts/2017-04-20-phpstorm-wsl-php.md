@@ -31,9 +31,11 @@ sudo service ssh restart
 3. In PHPStorm configure remote PHP interpreter
 
 Here is remote config button
+
 <img src="/files/images/debug2.PNG">
 
 Here is remote config itself
+
 <img src="/files/images/debug1.PNG">
 
 4. Set up Path mappings. Your project files to WSL files. Keep in mind you have to specify absolute path, 
