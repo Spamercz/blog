@@ -10,7 +10,6 @@ title: Some Title
 # content
 
 
-<p>
-    <a href="http://blog.spameri.cz">Back to index</a>
-</p>
-<p class="meta">Posted: {{ page.date | date_to_string }}</p>
+{% include footer.html %}
+
+{% include disqus.md %}
